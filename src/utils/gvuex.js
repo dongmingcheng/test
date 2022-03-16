@@ -50,29 +50,3 @@ class Store {
 
 export { createStore, useStore }
 
-
-setName(datas){ //遍历树  获取id数组
-    for(var i in datas){
-      this.expandedKeys.push(datas[i].id)  // 遍历项目满足条件后的操作
-      if(datas[i].children){  //存在子节点就递归
-        this.setName(datas[i].children);
-      }
-    }
-},
-
-const setLevel = (arr, level) => {
-    arr.children && arr.children.forEach(item => {
-        // ****** --- 修改的逻辑
-        item.level = level
-
-        let nextLevel = ''
-        switch(level){
-            case 1: nextLevel = 2;break;
-            // ...
-        }
-        if(item.children){
-            setLevel(item.children, nextLevel)
-        }
-
-    })
-}
